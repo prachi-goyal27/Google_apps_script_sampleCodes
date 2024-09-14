@@ -1,0 +1,32 @@
+function createEvent(){
+    const ss = SpreadsheetApp.openById("1zRTKmeQf5dDB3O0nO2TyTwUpIsuyvPDfykpr5OA7mOU");
+    const sheet = ss.getSheetByName("CalendarEvent");
+    const data = sheet.getDataRange().getValues();
+    Logger.log(data)
+    data.forEach(function(row){
+        const title = row[1];
+        const eventDate = new Date(row[2]);
+        const eventDescription = row[3];
+        const guestEmails = row[4];
+        const calendar = CalendarApp.getDefaultCalendar();
+
+        if(isNaN(eventDate.getTime())){
+            console.log(`Invalid date for event: ${eventDate}`);
+            return;
+        }
+        const event = calendar.createAllDayEvent(title, eventDate, {description: eventDescription});
+
+        if(guestEmails){
+            const guestArray = guestEmails.split(",");
+            guestArray.forEach(function(guest){
+                guest = guest.trim();
+                if(guest){
+                    event.addGuest(guest)
+                }
+            });
+        }
+        const formattedDate = eventDate.toDateString();
+
+        GmailApp.sendEmail(Session.getActiveUser().getEmail(),`Event created: ${title}`,`please attend the event ${title}  & ${eventDescription} held on ${formattedDate}`)
+    })
+}

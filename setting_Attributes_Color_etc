@@ -1,0 +1,12 @@
+function seeParaThree(){
+      const doc = DocumentApp.openById("1vTchOxDpnsGy483lMNstovJz6HxnPwRHUYLxvPo2dwQ")
+      const body = doc.getBody();
+      const att = {
+        "FOREGROUND_COLOR": "#a0db0f",
+        "BOLD": true
+      }
+      for (let i = 0; i < body.getNumChildren(); i++) {
+        const element = body.getChild(i);
+        element.setAttributes(att)        
+      }
+}

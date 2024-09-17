@@ -1,0 +1,18 @@
+function seeParaTwo() {
+  const doc = DocumentApp.openById("1vTchOxDpnsGy483lMNstovJz6HxnPwRHUYLxvPo2dwQ")
+  const body = doc.getBody();
+  const paraList = body.getParagraphs().length;
+
+  for (let i = 0; i < paraList; i++) {
+    const element = body.getChild(i);
+    const isPara = element.getType() == "PARAGRAPH"
+        if(isPara){
+            const content = element.getText()
+            if(content ==""){
+                console.log("Yes it is blank");
+               
+                element.removeFromParent()
+            }
+          }
+        }  
+     }

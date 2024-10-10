@@ -1,0 +1,5 @@
+function changeBackgroundColor(){
+    const ss = SpreadsheetApp.getActiveSpreadsheet().getACtiveSheet();
+    const cell = ss.getActiveCell()
+    const background = cell.setBackgroundColor('pink');
+}

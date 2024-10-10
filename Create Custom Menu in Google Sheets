@@ -1,0 +1,13 @@
+function onOpen(){
+DocumentApp.getUi()
+    .createMenu('Advanced')
+    .addItem('one','fun1')
+    .addToUi();
+}
+
+
+function fun1(){
+      let ui = SpreadsheetApp.getUi();
+    let result = ui.alert('QUESTION',"Are you logged in?", ui.ButtonSet.YES_NO_CANCEL);
+    ui.alert('You responded with ' + result);
+}

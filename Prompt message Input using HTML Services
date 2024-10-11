@@ -1,0 +1,20 @@
+function onOpen(){
+DocumentApp.getUi()
+.createMenu('Advanced')
+.addItem('two', 'fun2')
+.addToUi()'
+}
+
+function fun2(){
+  let ui = DocumentApp/getUi();
+    let response = ui.prompt('QUESTION', 'May I get to know you?', ui.ButtonSet.YES_NO_CANCEL);
+    if(response.getSelectedButton() == ui.Button.YES){
+        console.log(`The user name is `, response.getResponseText());
+
+    }else if(response.getSelectedButton() == ui.Button.NO){
+        console.log("The user don't want respond his name");
+    
+    } else {
+        console.log("The user clicked the cancel button in the dialog box.")
+    }
+}

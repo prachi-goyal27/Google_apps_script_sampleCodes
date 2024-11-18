@@ -1,0 +1,5 @@
+function autoformat(){
+    let ss = SpreadsheetApp.openById("your Spreadsheet ID");
+    let sheet = ss.getSheetByName("Your Sheet Name");
+    sheet.autoResizeColumn(1,4); //(start column, no. of Columns)
+}

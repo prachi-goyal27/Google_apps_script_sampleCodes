@@ -1,0 +1,5 @@
+function clear(){
+  let ss = SpreadsheetApp.openById("14YCknEL2w0AK0jXa8O2NftjoGF6vBOYLp_HZc6bTgSI");
+  let sheet = ss.getSheetByName("Sheet3");
+  sheet.clearFormats();
+}

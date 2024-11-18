@@ -1,5 +1,14 @@
 function clear(){
-  let ss = SpreadsheetApp.openById("14YCknEL2w0AK0jXa8O2NftjoGF6vBOYLp_HZc6bTgSI");
-  let sheet = ss.getSheetByName("Sheet3");
+  let ss = SpreadsheetApp.openById("your Spreadsheet ID");
+  let sheet = ss.getSheetByName("Your Sheet Name");
   sheet.clearFormats();
+}
+
+//another way to do it
+
+function clearFormatting(){
+  let ss = SpreadsheetApp.openById("your Spreadsheet ID");
+  let sheet = ss.getSheetByName("Your Sheet Name");
+  sheet.clear({formatOnly:TRUE, contentOnly: false});
+
 }

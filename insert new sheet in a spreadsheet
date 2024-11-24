@@ -1,0 +1,12 @@
+function makeNewSheet(){
+    const id = "Your-SpreadsheetId";
+    let ss = SpreadsheetApp.openById(id);
+    const sheets = ss.getSheets();
+    Logger.log(sheets);
+    const newName = "Newly Created";
+    let sheet = ss.getSheetByName(newName);
+    if(sheet == null){
+        sheet = ss.insertSheet(newName);
+    } 
+    Logger.log(sheet.getIndex())
+}

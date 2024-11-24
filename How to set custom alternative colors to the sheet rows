@@ -1,0 +1,15 @@
+function addColors(){
+    let id= "your-SpreadsheetId";
+    let ss = SpreadsheetApp.openById(id);
+    let sheet = ss.getSheets()[0];
+    for(i=1;i<51;i++){
+        let backColor = "green";
+        if((i%2)==0){
+             backColor = "#bccf8d";
+        }else{
+            backColor = "#f5f9eb ";
+        }
+        //way to select range
+       sheet.getRange('A'+i+ ':E' +i).setBackground(backColor)
+    }
+}

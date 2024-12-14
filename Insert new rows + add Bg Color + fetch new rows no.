@@ -1,0 +1,22 @@
+function insertRows(){
+   try {
+     const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getActiveSheet();
+    const row = sheet.getActiveCell().getRow();
+    const numRowsToInsert = 5;
+    const newRows = sheet.insertRows(row, numRowsToInsert)
+    const range = sheet.getRange(row,1,numRowsToInsert, sheet.getLastColumn());
+    range.setBackground('green')
+  
+    const insertedRowNumbers = [];
+    for(let i =0; i<numRowsToInsert; i++){
+        insertedRowNumbers.push(range.getRowIndex()+i)
+    }
+    Logger.log(insertedRowNumbers)
+
+    Logger.log("Rows inserted successfully.")
+   } catch (error) {
+    Logger.log("Rows not inserted " + error)
+   }
+
+}

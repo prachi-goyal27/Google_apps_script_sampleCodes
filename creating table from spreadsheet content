@@ -1,0 +1,16 @@
+function table(){
+    const ss = SpreadsheetApp.openById("1K1KI7FV4ZB0yz2PxlAI1p05Wq4_sXfK7LZVMh_2CQJM")
+    const data = ss.getActiveSheet().getDataRange().getValues();
+    const body = DocumentApp.getActiveDocument().getBody();
+    body.clear();
+    const table = body.appendTable(data);
+   
+    const numCols = data[0].length;
+    for(let col=0; col <numCols; col++){
+      const cell = table.getRow(0).getCell(col);
+      if(cell){
+        cell.setBold(true)
+      }
+    }
+    table.isAtDocumentEnd()
+}

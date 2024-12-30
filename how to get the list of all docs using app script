@@ -1,0 +1,13 @@
+function listAllDocs(){
+    const files = DriveApp.getFiles();
+    let docs = [];
+    while(files.hasNext()){
+        let file = files.next();
+        if(file.getMimeType() === "application/vnd.google-apps.document"){
+            docs.push(file.getName())
+        }
+    }
+    Logger.log(docs);
+    return docs;
+    
+}

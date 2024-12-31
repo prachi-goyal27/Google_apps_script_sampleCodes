@@ -1,0 +1,17 @@
+function moveToTrash(){
+    const files = DriveApp.getFilesByName("New Name")
+    while(files.hasNext()){
+        const file = files.next();
+        const today = new Date();
+        const fileInfo = {};
+        const lastUpdated = file.getLastUpdated();
+        fileInfo.active = today - lastUpdated;
+        fileInfo.fileName = file.getName();
+        fileInfo.fileType = file.getMimeType();
+        const hour1 = 1000*60*60
+        if(fileInfo.active < hour1){
+            file.setTrashed(true);
+        }
+        
+     }
+}
